@@ -4,7 +4,7 @@ import GameBoard from "./GameBoard";
 function Display() {
   return (
     <>
-      <GameBoard />
+      <GameBoard username={"Blompo"} isActivePlayer={false} />
     </>
   );
 }

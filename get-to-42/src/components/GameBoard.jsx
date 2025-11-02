@@ -2,15 +2,18 @@ import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import LoginPage from "./LoginPage";
 
-function GameBoard() {
+function GameBoard({ username, isActivePlayer }) {
   const [number, setNumber] = useState(0);
 
   return (
     <>
-      <h1>{number}</h1>
-      {/* // <LoginPage />; */}
-      <ActionButtons number={number} setNumber={setNumber} />
-      {/* // X button */}
+      <div style={{ opacity: 0.5 + isActivePlayer * 0.5 }}>
+        <h2>{username}</h2>
+        <h1>{number}</h1>
+        {/* // <LoginPage />; */}
+        <ActionButtons number={number} setNumber={setNumber} />
+        {/* // X button */}
+      </div>
     </>
   );
 }
