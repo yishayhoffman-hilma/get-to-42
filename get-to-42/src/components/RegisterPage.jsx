@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 
-function LoginPage({ setIsLoggedIn }) {
-  const [userNameField, setUserNameField] = useState("");
-  const [passwordField, setPasswordField] = useState("");
+function RegisterPage() {
+  const [userNameField, setUserNameField] = useState();
+  const [passwordField, setPasswordField] = useState();
 
-  function checkLoginInfo(event) {
-    event.preventDefault();
-    if (localStorage.getItem(userNameField)) {
-      if (
-        passwordField ===
-        JSON.parse(localStorage.getItem(userNameField)).password
-      ) {
-        console.log("second");
-        setIsLoggedIn(true);
-      }
+  function checkUserAviabilty() {
+    if (!localStorage.getItem(userNameField)) {
+      localStorage.setItem(userNameField, { password: passwordField });
+      alert("user registered succsesfully");
+    } else {
+      alert("username unavailable");
     }
   }
 
@@ -21,7 +17,7 @@ function LoginPage({ setIsLoggedIn }) {
     <>
       <form
         action=""
-        onSubmit={checkLoginInfo}
+        onSubmit={checkUserAviabilty}
         style={{ display: "flex", flexDirection: "column" }}
       >
         <label htmlFor="username">username:</label>
@@ -50,4 +46,4 @@ function LoginPage({ setIsLoggedIn }) {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
