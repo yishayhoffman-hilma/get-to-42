@@ -6,8 +6,8 @@ function Display(props) {
   return (
     <>
       <Navbar addPlayer={props.addPlayer} />
-      {props.players.map(() => {
-        return <GameBoard />;
+      {props.players.map((value, index) => {
+        return <GameBoard key={index} />;
       })}
     </>
   );
