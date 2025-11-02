@@ -1,10 +1,11 @@
 import "./App.css";
+import Display from "./components/Display";
 
 function App() {
   <>
-    <Navbar />
+    {/* <Navbar /> */}
     <Display />
-    <Leaderboard />
+    {/* <Leaderboard /> */}
   </>;
 }
 
