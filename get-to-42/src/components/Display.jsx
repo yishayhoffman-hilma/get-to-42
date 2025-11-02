@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import GameBoard from "./GameBoard";
+import Navbar from "./Navbar";
 
-function Display() {
+function Display({ players, addPlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
 
   function passTurn() {
@@ -14,16 +15,22 @@ function Display() {
         return prev + 1;
       });
     }
-    console.log(currentTurn);
   }
 
   return (
     <>
-      <GameBoard
-        username={"Blompo"}
-        isActivePlayer={currentTurn === 0}
-        passTurn={passTurn}
-      />
+      <Navbar addPlayer={addPlayer} />
+      {players.map((item, index) => {
+        console.log(index);
+        return (
+          <GameBoard
+            username={"Blompo"}
+            isActivePlayer={currentTurn === index}
+            passTurn={passTurn}
+            key={index}
+          />
+        );
+      })}
     </>
   );
 }
