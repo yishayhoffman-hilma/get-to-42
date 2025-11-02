@@ -1,5 +1,5 @@
-import ActionButtons from "./ActionButtons";
-import LoginPage from "./LoginPage";
+// import ActionButtons from "./ActionButtons";
+// import LoginPage from "./LoginPage";
 
 function GameBoard() {
   <LoginPage />;
