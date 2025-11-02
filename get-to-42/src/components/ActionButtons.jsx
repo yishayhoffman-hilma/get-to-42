@@ -1,10 +1,10 @@
 import React from "react";
 
-const ActionButtons = ({ number, setNumber, passTurn, isEnabled }) => {
+const ActionButtons = ({ number, setNumber, passTurn, isDisabled }) => {
   return (
     <>
       <button
-        disabled={isEnabled}
+        disabled={isDisabled}
         onClick={() => {
           setNumber(number + 1);
           passTurn();
@@ -13,7 +13,7 @@ const ActionButtons = ({ number, setNumber, passTurn, isEnabled }) => {
         +1
       </button>
       <button
-        disabled={isEnabled}
+        disabled={isDisabled}
         onClick={() => {
           setNumber(number - 1);
           passTurn();
@@ -22,7 +22,7 @@ const ActionButtons = ({ number, setNumber, passTurn, isEnabled }) => {
         -1
       </button>
       <button
-        disabled={isEnabled}
+        disabled={isDisabled}
         onClick={() => {
           setNumber(number * 2);
           passTurn();
@@ -31,7 +31,7 @@ const ActionButtons = ({ number, setNumber, passTurn, isEnabled }) => {
         *2
       </button>
       <button
-        disabled={isEnabled}
+        disabled={isDisabled}
         onClick={() => {
           setNumber(Math.floor(number / 2));
           passTurn();

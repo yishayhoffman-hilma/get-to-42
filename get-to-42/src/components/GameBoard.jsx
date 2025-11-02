@@ -15,7 +15,7 @@ function GameBoard({ username, isActivePlayer, passTurn }) {
           number={number}
           setNumber={setNumber}
           passTurn={passTurn}
-          isEnabled={isActivePlayer}
+          isDisabled={!isActivePlayer}
         />
         {/* // X button */}
       </div>

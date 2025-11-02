@@ -6,7 +6,7 @@ function Display({ players, addPlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
 
   function passTurn() {
-    const numberOfPlayers = 2;
+    const numberOfPlayers = players.length;
 
     if (currentTurn + 1 === numberOfPlayers) {
       setCurrentTurn(0);
@@ -15,19 +15,21 @@ function Display({ players, addPlayer }) {
         return prev + 1;
       });
     }
+    console.log("TurnPassed", currentTurn);
   }
 
+  console.log("current turn", currentTurn);
   return (
     <>
       <Navbar addPlayer={addPlayer} />
       {players.map((item, index) => {
-        console.log(index);
+        console.log("INDEX", index);
         return (
           <GameBoard
+            key={index}
             username={"Blompo"}
             isActivePlayer={currentTurn === index}
             passTurn={passTurn}
-            key={index}
           />
         );
       })}
