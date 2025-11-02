@@ -1,12 +1,44 @@
 import React from "react";
 
-const ActionButtons = ({ number, setNumber }) => {
+const ActionButtons = ({ number, setNumber, passTurn, isDisabled }) => {
   return (
     <>
-      <button onClick={() => setNumber(number + 1)}>+1</button>
-      <button onClick={() => setNumber(number - 1)}>-1</button>
-      <button onClick={() => setNumber(number * 2)}>*2</button>
-      <button onClick={() => setNumber(Math.floor(number / 2))}>/2</button>
+      <button
+        disabled={isDisabled}
+        onClick={() => {
+          setNumber(number + 1);
+          passTurn();
+        }}
+      >
+        +1
+      </button>
+      <button
+        disabled={isDisabled}
+        onClick={() => {
+          setNumber(number - 1);
+          passTurn();
+        }}
+      >
+        -1
+      </button>
+      <button
+        disabled={isDisabled}
+        onClick={() => {
+          setNumber(number * 2);
+          passTurn();
+        }}
+      >
+        *2
+      </button>
+      <button
+        disabled={isDisabled}
+        onClick={() => {
+          setNumber(Math.floor(number / 2));
+          passTurn();
+        }}
+      >
+        /2
+      </button>
     </>
   );
 };
