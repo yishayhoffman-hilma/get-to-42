@@ -2,7 +2,7 @@ import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import LoginPage from "./LoginPage";
 
-function GameBoard({ username, isActivePlayer }) {
+function GameBoard({ username, isActivePlayer, passTurn }) {
   const [number, setNumber] = useState(0);
 
   return (
@@ -11,7 +11,11 @@ function GameBoard({ username, isActivePlayer }) {
         <h2>{username}</h2>
         <h1>{number}</h1>
         {/* // <LoginPage />; */}
-        <ActionButtons number={number} setNumber={setNumber} />
+        <ActionButtons
+          number={number}
+          setNumber={setNumber}
+          passTurn={passTurn}
+        />
         {/* // X button */}
       </div>
     </>
