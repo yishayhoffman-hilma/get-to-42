@@ -15,10 +15,8 @@ function Display({ players, addPlayer }) {
         return prev + 1;
       });
     }
-    console.log("TurnPassed", currentTurn);
   }
 
-  console.log("current turn", currentTurn);
   return (
     <>
       <Navbar addPlayer={addPlayer} />

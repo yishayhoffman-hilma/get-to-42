@@ -1,20 +1,21 @@
 import React from "react";
 import { useState } from "react";
 
-function LoginPage() {
-  const [userNameField, setUserNameField] = useState();
-  const [passwordField, setPasswordField] = useState();
+function LoginPage({ setIsLoggedIn }) {
+  const [userNameField, setUserNameField] = useState("");
+  const [passwordField, setPasswordField] = useState("");
 
   function checkLoginInfo(event) {
     event.preventDefault();
     if (localStorage.getItem(userNameField)) {
-      if (
-        passwordField === JSON.stringify(localStorage.getItem(userNameField))
-      ) {
-        return true;
+      console.log("entered first if");
+      console.log(localStorage.getItem(userNameField));
+
+      if (passwordField === localStorage.getItem(userNameField)) {
+        console.log("second");
+        setIsLoggedIn(true);
       }
     }
-    return false;
   }
 
   return (
