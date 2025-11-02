@@ -5,9 +5,25 @@ function LoginPage() {
   const [userNameField, setUserNameField] = useState();
   const [passwordField, setPasswordField] = useState();
 
+  function checkLoginInfo(event) {
+    event.preventDefault();
+    if (localStorage.getItem(userNameField)) {
+      if (
+        passwordField === JSON.stringify(localStorage.getItem(userNameField))
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   return (
     <>
-      <form action="" style={{ display: "flex", flexDirection: "column" }}>
+      <form
+        action=""
+        onSubmit={checkLoginInfo}
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <label htmlFor="username">username:</label>
         <input
           type="text"
@@ -23,16 +39,15 @@ function LoginPage() {
           type="password"
           id="password"
           name="password"
-          onChange={() => {}}
+          onChange={(event) => {
+            setPasswordField(event.target.value);
+            console.log(event.target.value);
+          }}
         />
-        <input type="submit" onSubmit={checkLoginInfo} />
+        <input type="submit" />
       </form>
     </>
   );
-}
-
-function checkLoginInfo(event) {
-  event.preventDefault();
 }
 
 export default LoginPage;
