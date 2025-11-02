@@ -1,10 +1,14 @@
 import React from "react";
 import GameBoard from "./GameBoard";
+import Navbar from "./Navbar";
 
-function Display() {
+function Display(props) {
   return (
     <>
-      <GameBoard />
+      <Navbar addPlayer={props.addPlayer} />
+      {props.players.map(() => {
+        return <GameBoard />;
+      })}
     </>
   );
 }
