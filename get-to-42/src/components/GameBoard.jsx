@@ -1,9 +1,11 @@
-// import ActionButtons from "./ActionButtons";
-// import LoginPage from "./LoginPage";
+import { useState } from "react";
+import ActionButtons from "./ActionButtons";
+import LoginPage from "./LoginPage";
 
 function GameBoard() {
+  const [number, setNumber] = useState(0);
   <LoginPage />;
-  <ActionButtons />;
+  <ActionButtons number={number} setNumber={setNumber} />;
   // X button
 }
 
