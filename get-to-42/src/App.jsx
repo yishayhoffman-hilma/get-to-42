@@ -14,9 +14,21 @@ function App() {
     }
   }
 
+  function removePlayer(userIndex) {
+    setPlayers((prev) => {
+      return prev.filter((item, index) => {
+        return index !== userIndex;
+      });
+    });
+  }
+
   return (
     <>
-      <Display players={players} addPlayer={addPlayer} />
+      <Display
+        players={players}
+        addPlayer={addPlayer}
+        removePlayer={removePlayer}
+      />
       <Leaderboard />
     </>
   );

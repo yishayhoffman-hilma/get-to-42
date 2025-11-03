@@ -3,14 +3,14 @@ import GameBoard from "./GameBoard";
 import Navbar from "./Navbar";
 import DisplayLost from "./DisplayLost";
 
-function calcAverage(currentAverage, gamesAmount, amountOfMoves) {
-  if (Number.isNaN(currentAverage)) return amountOfMoves;
+function calcAverage(currentAverage, gamesWon, amountOfMoves) {
+  if (currentAverage === null) return amountOfMoves;
   const newAverage =
-    (currentAverage * gamesAmount + amountOfMoves) / (gamesAmount + 1);
+    (currentAverage * gamesWon + amountOfMoves) / (gamesWon + 1);
   return newAverage;
 }
 
-function Display({ players, addPlayer }) {
+function Display({ players, addPlayer, removePlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
@@ -19,15 +19,15 @@ function Display({ players, addPlayer }) {
 
     userData.averageMoves = calcAverage(
       userData.averageMoves,
-      userData.gamesAmount,
+      userData.gamesWon,
       amountOfMoves
     );
-    userData.gamesAmount++;
+    userData.gamesWon++;
 
     localStorage.setItem(username, JSON.stringify(userData));
 
     console.log(username, "has won with", amountOfMoves, "moves");
-    setGameOver(true);
+    // setGameOver(true);
   }
 
   function passTurn() {
@@ -50,12 +50,14 @@ function Display({ players, addPlayer }) {
         {players.map((item, index) => {
           return (
             <GameBoard
-              key={index}
+              key={"gameboard" + index}
               username={"Blompo"}
               isActivePlayer={currentTurn === index}
               passTurn={passTurn}
               setWinner={setWinner}
               gameOver={gameOver}
+              removePlayer={removePlayer}
+              playerIndex={index}
             />
           );
         })}

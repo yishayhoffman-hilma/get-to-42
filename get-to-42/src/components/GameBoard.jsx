@@ -5,7 +5,14 @@ import RegisterPage from "./RegisterPage";
 import DisplayWon from "./DisplayWon";
 import DisplayLost from "./DisplayLost";
 
-function GameBoard({ isActivePlayer, passTurn, setWinner, gameOver }) {
+function GameBoard({
+  isActivePlayer,
+  removePlayer,
+  passTurn,
+  setWinner,
+  gameOver,
+  playerIndex,
+}) {
   const [number, setNumber] = useState(Math.floor(Math.random() * 42));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -32,13 +39,14 @@ function GameBoard({ isActivePlayer, passTurn, setWinner, gameOver }) {
           setIsSigningUp={setIsSigningUp}
           setCurrentUser={setCurrentUser}
         />
+        <button onClick={() => removePlayer(playerIndex)}>Exit</button>
       </>
     );
   }
 
   if (number === 42 || gameOver) {
     if (number === 42) {
-      setWinner(currentUser);
+      setWinner(currentUser, moveCounter);
       return <DisplayWon />;
     } else {
       return <DisplayLost />;
@@ -57,7 +65,6 @@ function GameBoard({ isActivePlayer, passTurn, setWinner, gameOver }) {
           isDisabled={!isActivePlayer}
           setMoveCounter={setMoveCounter}
         />
-        {/* // X button */}
       </div>
     </>
   );
