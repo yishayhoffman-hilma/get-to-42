@@ -4,7 +4,8 @@ function RegisterPage() {
   const [userNameField, setUserNameField] = useState();
   const [passwordField, setPasswordField] = useState();
 
-  function checkUserAviabilty() {
+  function checkUserAviabilty(event) {
+    event.preventDefault();
     if (!localStorage.getItem(userNameField)) {
       localStorage.setItem(userNameField, { password: passwordField });
       alert("user registered succsesfully");
