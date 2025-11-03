@@ -13,8 +13,8 @@ function RegisterPage(props) {
         userNameField,
         JSON.stringify({
           password: passwordField,
-          averageMoves: NaN,
-          gamesAmount: 0,
+          averageMoves: null,
+          gamesWon: 0,
         })
       );
       alert("user registered succsesfully");
