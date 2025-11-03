@@ -3,6 +3,7 @@ function Navbar(props) {
     <>
       <nav>
         <button onClick={props.addPlayer}>Add player</button>
+        <button onClick={() => {}}>Restart</button>
       </nav>
     </>
   );
