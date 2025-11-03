@@ -6,6 +6,9 @@ import Leaderboard from "./components/Leaderboard";
 function App() {
   const [players, setPlayers] = useState([]);
 
+  const [topPlayers, setTopPlayers] = useState(["p1", "p2", "p3"]);
+  const [topScores, setTopScores] = useState([0, 0, 0]);
+
   function addPlayer() {
     if (players.length < 4) {
       setPlayers((prevPlayers) => {
@@ -29,7 +32,13 @@ function App() {
         addPlayer={addPlayer}
         removePlayer={removePlayer}
       />
-      <Leaderboard />
+      <Leaderboard
+        setTopPlayers={setTopPlayers}
+        setTopScores={setTopScores}
+        topPlayers={topPlayers}
+        topScores={topScores}
+        player={localStorage.getItem("last-winner")}
+      />
     </>
   );
 }

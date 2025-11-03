@@ -27,7 +27,7 @@ function Display({ players, addPlayer, removePlayer }) {
     localStorage.setItem(username, JSON.stringify(userData));
 
     console.log(username, "has won with", amountOfMoves, "moves");
-    // setGameOver(true);
+    setGameOver(true);
   }
 
   function passTurn() {

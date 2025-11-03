@@ -1,33 +1,33 @@
-import { useState } from "react";
-
-function Leaderboard() {
-  const [topPlayers, setTopPlayers] = useState(["p1", "p2", "p3"]);
-  const [topScores, setTopScores] = useState([0, 0, 0]);
-  localStorage.setItem("top-scores", topScores);
+function Leaderboard(props) {
+  if (localStorage.getItem(!"top-scores")) {
+    localStorage.setItem("top-scores", props.topScores);
+  }
 
   function updateLeaderBoard(player) {
-    if (player.score > topScores[2]) {
-      if (player.score > topScores[1]) {
-        if (player.score > topScores[0]) {
-          topScores[0] = player.score;
-          topPlayers[0] = player;
+    if (player.score > props.topScores[2]) {
+      if (player.score > props.topScores[1]) {
+        if (player.score > props.topScores[0]) {
+          props.topScores[0] = player.score;
+          props.topPlayers[0] = player;
         } else {
-          topScores[1] = player.score;
-          topPlayers[1] = player;
+          props.topScores[1] = player.score;
+          props.topPlayers[1] = player;
         }
       } else {
-        topScores[2] = player.score;
-        topPlayers[2] = player;
+        props.topScores[2] = player.score;
+        props.topPlayers[2] = player;
       }
     }
   }
 
+  updateLeaderBoard(props.player);
+
   return (
     <>
       <ol>
-        <li>{topPlayers[0] + ":" + topScores[0]}</li>
-        <li>{topPlayers[1] + ":" + topScores[1]}</li>
-        <li>{topPlayers[2] + ":" + topScores[2]}</li>
+        <li>{props.topPlayers[0] + ":" + props.topScores[0]}</li>
+        <li>{props.topPlayers[1] + ":" + props.topScores[1]}</li>
+        <li>{props.topPlayers[2] + ":" + props.topScores[2]}</li>
       </ol>
     </>
   );
