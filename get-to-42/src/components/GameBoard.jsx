@@ -53,6 +53,7 @@ function GameBoard({
     }
   }
   if (number === "42") {
+    localStorage.setItem("last-winner", localStorage.getItem(currentUser));
     return <DisplayWon />;
   }
   if (gameOver) {

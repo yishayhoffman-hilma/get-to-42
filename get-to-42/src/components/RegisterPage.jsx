@@ -15,6 +15,7 @@ function RegisterPage(props) {
           password: passwordField,
           averageMoves: null,
           gamesWon: 0,
+          name: userNameField,
         })
       );
       alert("user registered succsesfully");
