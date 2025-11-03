@@ -3,6 +3,13 @@ import GameBoard from "./GameBoard";
 import Navbar from "./Navbar";
 import DisplayLost from "./DisplayLost";
 
+let keyId = 0;
+function getKeyId() {
+  keyId++;
+  console.log(keyId, "keyID");
+  return keyId;
+}
+
 function calcAverage(currentAverage, gamesWon, amountOfMoves) {
   if (currentAverage === null) return amountOfMoves;
   const newAverage =
@@ -50,8 +57,7 @@ function Display({ players, addPlayer, removePlayer }) {
         {players.map((item, index) => {
           return (
             <GameBoard
-              key={"gameboard" + index}
-              username={"Blompo"}
+              key={item.id}
               isActivePlayer={currentTurn === index}
               passTurn={passTurn}
               setWinner={setWinner}
