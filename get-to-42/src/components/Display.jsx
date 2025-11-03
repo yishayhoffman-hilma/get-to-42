@@ -3,13 +3,6 @@ import GameBoard from "./GameBoard";
 import Navbar from "./Navbar";
 import DisplayLost from "./DisplayLost";
 
-let keyId = 0;
-function getKeyId() {
-  keyId++;
-  console.log(keyId, "keyID");
-  return keyId;
-}
-
 function calcAverage(currentAverage, gamesWon, amountOfMoves) {
   if (currentAverage === null) return amountOfMoves;
   const newAverage =
@@ -34,7 +27,7 @@ function Display({ players, addPlayer, removePlayer }) {
     localStorage.setItem(username, JSON.stringify(userData));
 
     console.log(username, "has won with", amountOfMoves, "moves");
-    // setGameOver(true);
+    setGameOver(true);
   }
 
   function passTurn() {
