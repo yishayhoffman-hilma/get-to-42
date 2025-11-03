@@ -50,8 +50,7 @@ function Display({ players, addPlayer, removePlayer }) {
         {players.map((item, index) => {
           return (
             <GameBoard
-              key={"gameboard" + index}
-              username={"Blompo"}
+              key={item.id}
               isActivePlayer={currentTurn === index}
               passTurn={passTurn}
               setWinner={setWinner}

@@ -4,6 +4,7 @@ import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import DisplayWon from "./DisplayWon";
 import DisplayLost from "./DisplayLost";
+import ExitButton from "./ExitButton";
 
 function GameBoard({
   isActivePlayer,
@@ -27,6 +28,7 @@ function GameBoard({
           setIsSigningUp={setIsSigningUp}
           setIsLoggedIn={setIsLoggedIn}
         />
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
       </>
     );
   }
@@ -39,18 +41,22 @@ function GameBoard({
           setIsSigningUp={setIsSigningUp}
           setCurrentUser={setCurrentUser}
         />
-        <button onClick={() => removePlayer(playerIndex)}>Exit</button>
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
       </>
     );
   }
 
-  if (number === 42 || gameOver) {
+  if (number === 42) {
     if (number === 42) {
+      setNumber("42");
       setWinner(currentUser, moveCounter);
-      return <DisplayWon />;
-    } else {
-      return <DisplayLost />;
     }
+  }
+  if (number === "42") {
+    return <DisplayWon />;
+  }
+  if (gameOver) {
+    return <DisplayLost />;
   }
 
   return (
