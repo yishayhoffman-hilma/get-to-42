@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LoginPage({ setIsLoggedIn }) {
+function LoginPage(props) {
   const [userNameField, setUserNameField] = useState("");
   const [passwordField, setPasswordField] = useState("");
 
@@ -11,14 +11,15 @@ function LoginPage({ setIsLoggedIn }) {
         passwordField ===
         JSON.parse(localStorage.getItem(userNameField)).password
       ) {
-        console.log("second");
-        setIsLoggedIn(true);
+        props.setCurrentUser(userNameField);
+        props.setIsLoggedIn(true);
       }
     }
   }
 
   return (
     <>
+      <h3>login</h3>
       <form
         action=""
         onSubmit={checkLoginInfo}
@@ -46,6 +47,7 @@ function LoginPage({ setIsLoggedIn }) {
         />
         <input type="submit" />
       </form>
+      <button onClick={() => props.setIsSigningUp(true)}>sign up</button>
     </>
   );
 }
