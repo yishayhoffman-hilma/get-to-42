@@ -11,7 +11,7 @@ function calcAverage(currentAverage, gamesWon, amountOfMoves) {
 }
 
 function Display({ players, addPlayer, removePlayer }) {
-  const [currentTurn, setCurrentTurn] = useState(0);
+  const [currentTurn, setCurrentTurn] = useState(-1);
   const [gameOver, setGameOver] = useState(false);
 
   function setWinner(username, amountOfMoves) {
@@ -44,7 +44,7 @@ function Display({ players, addPlayer, removePlayer }) {
 
   return (
     <>
-      <Navbar addPlayer={addPlayer} />
+      <Navbar addPlayer={addPlayer} setCurrentTurn={setCurrentTurn} />
 
       <div style={{ display: "flex" }}>
         {players.map((item, index) => {
