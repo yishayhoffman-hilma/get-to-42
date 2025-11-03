@@ -11,7 +11,11 @@ function RegisterPage(props) {
     if (!localStorage.getItem(userNameField)) {
       localStorage.setItem(
         userNameField,
-        JSON.stringify({ password: passwordField })
+        JSON.stringify({
+          password: passwordField,
+          averageMoves: NaN,
+          gamesAmount: 0,
+        })
       );
       alert("user registered succsesfully");
       props.setIsSigningUp(false);

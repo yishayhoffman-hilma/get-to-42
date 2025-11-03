@@ -8,6 +8,8 @@ function GameBoard({ isActivePlayer, passTurn, setWinner }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [moveCounter, setMoveCounter] = useState(0);
+  // console.log(moveCounter, currentUser);
 
   if (isSigningUp) {
     return (
@@ -32,10 +34,8 @@ function GameBoard({ isActivePlayer, passTurn, setWinner }) {
     );
   }
 
-  const isWinning = number === 42;
-  if (isWinning) {
-    console.log("turn passed");
-    setWinner(currentUser);
+  if (number === 42) {
+    setWinner(currentUser, moveCounter);
   }
 
   return (
@@ -48,6 +48,7 @@ function GameBoard({ isActivePlayer, passTurn, setWinner }) {
           setNumber={setNumber}
           passTurn={passTurn}
           isDisabled={!isActivePlayer}
+          setMoveCounter={setMoveCounter}
         />
         {/* // X button */}
       </div>

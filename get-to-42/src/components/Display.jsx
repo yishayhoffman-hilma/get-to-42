@@ -2,11 +2,29 @@ import React, { useState } from "react";
 import GameBoard from "./GameBoard";
 import Navbar from "./Navbar";
 
+function calcAverage(currentAverage, gamesAmount, amountOfMoves) {
+  if (Number.isNaN(currentAverage)) return amountOfMoves;
+  const newAverage =
+    (currentAverage * gamesAmount + amountOfMoves) / (gamesAmount + 1);
+  return newAverage;
+}
+
 function Display({ players, addPlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
 
-  function setWinner(username) {
-    console.log(username, "has won");
+  function setWinner(username, amountOfMoves) {
+    const userData = JSON.parse(localStorage.getItem(username));
+
+    userData.averageMoves = calcAverage(
+      userData.averageMoves,
+      userData.gamesAmount,
+      amountOfMoves
+    );
+    userData.gamesAmount++;
+
+    localStorage.setItem(username, JSON.stringify(userData));
+
+    console.log(username, "has won with", amountOfMoves, "moves");
   }
 
   function passTurn() {
