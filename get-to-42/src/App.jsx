@@ -14,6 +14,9 @@ function generateUUID() {
 function App() {
   const [players, setPlayers] = useState([]);
 
+  const [topPlayers, setTopPlayers] = useState(["p1", "p2", "p3"]);
+  const [topScores, setTopScores] = useState([0, 0, 0]);
+
   function addPlayer() {
     const id = generateUUID();
     if (players.length < 4) {
@@ -39,7 +42,13 @@ function App() {
         addPlayer={addPlayer}
         removePlayer={removePlayer}
       />
-      <Leaderboard />
+      <Leaderboard
+        setTopPlayers={setTopPlayers}
+        setTopScores={setTopScores}
+        topPlayers={topPlayers}
+        topScores={topScores}
+        player={localStorage.getItem("last-winner")}
+      />
     </>
   );
 }
