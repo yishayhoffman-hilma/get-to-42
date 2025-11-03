@@ -5,6 +5,10 @@ import Navbar from "./Navbar";
 function Display({ players, addPlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
 
+  function setWinner(username) {
+    console.log(username, "has won");
+  }
+
   function passTurn() {
     const numberOfPlayers = players.length;
 
@@ -21,13 +25,14 @@ function Display({ players, addPlayer }) {
     <>
       <Navbar addPlayer={addPlayer} />
       {players.map((item, index) => {
-        console.log("INDEX", index);
+        // console.log("INDEX", index);
         return (
           <GameBoard
             key={index}
             username={"Blompo"}
             isActivePlayer={currentTurn === index}
             passTurn={passTurn}
+            setWinner={setWinner}
           />
         );
       })}

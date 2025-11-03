@@ -3,13 +3,10 @@ import ActionButtons from "./ActionButtons";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 
-function GameBoard({ username, isActivePlayer, passTurn }) {
+function GameBoard({ username, isActivePlayer, passTurn, setWinner }) {
   const [number, setNumber] = useState(Math.floor(Math.random() * 42));
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isSigningUp, setIsSigningUp] = useState(true);
-
-  const isWinning = number === 42;
-  // if (isWinning) passTurn();
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isSigningUp, setIsSigningUp] = useState(false);
 
   if (isSigningUp) {
     return (
@@ -25,6 +22,12 @@ function GameBoard({ username, isActivePlayer, passTurn }) {
         <LoginPage setIsLoggedIn={setIsLoggedIn} />
       </>
     );
+  }
+
+  const isWinning = number === 42;
+  if (isWinning) {
+    console.log("turn passed");
+    setWinner(username);
   }
 
   return (
