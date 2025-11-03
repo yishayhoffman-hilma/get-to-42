@@ -2,8 +2,10 @@ import { useState } from "react";
 import ActionButtons from "./ActionButtons";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
+import DisplayWon from "./DisplayWon";
+import DisplayLost from "./DisplayLost";
 
-function GameBoard({ isActivePlayer, passTurn, setWinner }) {
+function GameBoard({ isActivePlayer, passTurn, setWinner, gameOver }) {
   const [number, setNumber] = useState(Math.floor(Math.random() * 42));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -34,8 +36,14 @@ function GameBoard({ isActivePlayer, passTurn, setWinner }) {
     );
   }
 
-  if (number === 42) {
-    setWinner(currentUser, moveCounter);
+  const isWinning = number === 42;
+  if (isWinning || gameOver) {
+    if (isWinning) {
+      setWinner(currentUser);
+      return <DisplayWon />;
+    } else {
+      return <DisplayLost />;
+    }
   }
 
   return (

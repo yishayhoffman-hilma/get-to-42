@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GameBoard from "./GameBoard";
 import Navbar from "./Navbar";
+import DisplayLost from "./DisplayLost";
 
 function calcAverage(currentAverage, gamesAmount, amountOfMoves) {
   if (Number.isNaN(currentAverage)) return amountOfMoves;
@@ -11,6 +12,7 @@ function calcAverage(currentAverage, gamesAmount, amountOfMoves) {
 
 function Display({ players, addPlayer }) {
   const [currentTurn, setCurrentTurn] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   function setWinner(username, amountOfMoves) {
     const userData = JSON.parse(localStorage.getItem(username));
@@ -25,6 +27,7 @@ function Display({ players, addPlayer }) {
     localStorage.setItem(username, JSON.stringify(userData));
 
     console.log(username, "has won with", amountOfMoves, "moves");
+    setGameOver(true);
   }
 
   function passTurn() {
@@ -52,6 +55,7 @@ function Display({ players, addPlayer }) {
               isActivePlayer={currentTurn === index}
               passTurn={passTurn}
               setWinner={setWinner}
+              gameOver={gameOver}
             />
           );
         })}
