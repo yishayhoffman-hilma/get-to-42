@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 
-function RegisterPage() {
+function RegisterPage(props) {
   const [userNameField, setUserNameField] = useState();
   const [passwordField, setPasswordField] = useState();
 
-  function checkUserAviabilty() {
+  function checkUserAviabilty(event) {
+    event.preventDefault();
+    console.log(passwordField);
+
     if (!localStorage.getItem(userNameField)) {
-      localStorage.setItem(userNameField, { password: passwordField });
+      localStorage.setItem(
+        userNameField,
+        JSON.stringify({ password: passwordField })
+      );
       alert("user registered succsesfully");
+      props.setIsSigningUp(false);
     } else {
       alert("username unavailable");
     }
@@ -20,6 +27,7 @@ function RegisterPage() {
         onSubmit={checkUserAviabilty}
         style={{ display: "flex", flexDirection: "column" }}
       >
+        <h3>register</h3>
         <label htmlFor="username">username:</label>
         <input
           type="text"
@@ -41,6 +49,7 @@ function RegisterPage() {
           }}
         />
         <input type="submit" />
+        <button onClick={() => props.setIsSigningUp(false)}>login</button>
       </form>
     </>
   );

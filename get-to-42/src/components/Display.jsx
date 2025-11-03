@@ -24,18 +24,20 @@ function Display({ players, addPlayer }) {
   return (
     <>
       <Navbar addPlayer={addPlayer} />
-      {players.map((item, index) => {
-        // console.log("INDEX", index);
-        return (
-          <GameBoard
-            key={index}
-            username={"Blompo"}
-            isActivePlayer={currentTurn === index}
-            passTurn={passTurn}
-            setWinner={setWinner}
-          />
-        );
-      })}
+
+      <div style={{ display: "flex" }}>
+        {players.map((item, index) => {
+          return (
+            <GameBoard
+              key={index}
+              username={"Blompo"}
+              isActivePlayer={currentTurn === index}
+              passTurn={passTurn}
+              setWinner={setWinner}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
