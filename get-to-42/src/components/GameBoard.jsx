@@ -47,17 +47,26 @@ function GameBoard({
   }
 
   if (number === 42) {
-    if (number === 42) {
-      setNumber("42");
-      setWinner(currentUser, moveCounter);
-    }
+    setNumber("42");
+    setWinner(currentUser, moveCounter);
   }
+
   if (number === "42") {
     localStorage.setItem("last-winner", localStorage.getItem(currentUser));
-    return <DisplayWon />;
+    return (
+      <>
+        <DisplayWon />
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
+      </>
+    );
   }
   if (gameOver) {
-    return <DisplayLost />;
+    return (
+      <>
+        <DisplayLost />
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
+      </>
+    );
   }
 
   return (
