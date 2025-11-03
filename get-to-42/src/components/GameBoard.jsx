@@ -36,9 +36,8 @@ function GameBoard({ isActivePlayer, passTurn, setWinner, gameOver }) {
     );
   }
 
-  const isWinning = number === 42;
-  if (isWinning || gameOver) {
-    if (isWinning) {
+  if (number === 42 || gameOver) {
+    if (number === 42) {
       setWinner(currentUser);
       return <DisplayWon />;
     } else {

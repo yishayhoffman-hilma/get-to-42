@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import Display from "./components/Display";
 import Leaderboard from "./components/Leaderboard";
-import LoginPage from "./components/LoginPage";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -18,8 +17,7 @@ function App() {
   return (
     <>
       <Display players={players} addPlayer={addPlayer} />
-      {/* <Leaderboard /> */}
-      {/* <LoginPage /> */}
+      <Leaderboard />
     </>
   );
 }
