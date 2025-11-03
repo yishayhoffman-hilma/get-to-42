@@ -53,10 +53,20 @@ function GameBoard({
     }
   }
   if (number === "42") {
-    return <DisplayWon />;
+    return (
+      <>
+        <DisplayWon />
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
+      </>
+    );
   }
   if (gameOver) {
-    return <DisplayLost />;
+    return (
+      <>
+        <DisplayLost />
+        <ExitButton removePlayer={removePlayer} playerIndex={playerIndex} />
+      </>
+    );
   }
 
   return (
