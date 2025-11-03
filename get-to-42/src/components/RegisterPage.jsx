@@ -22,12 +22,12 @@ function RegisterPage(props) {
 
   return (
     <>
-      <h3>register</h3>
       <form
         action=""
         onSubmit={checkUserAviabilty}
         style={{ display: "flex", flexDirection: "column" }}
       >
+        <h3>register</h3>
         <label htmlFor="username">username:</label>
         <input
           type="text"
@@ -49,8 +49,8 @@ function RegisterPage(props) {
           }}
         />
         <input type="submit" />
+        <button onClick={() => props.setIsSigningUp(false)}>login</button>
       </form>
-      <button onClick={() => props.setIsSigningUp(false)}>login</button>
     </>
   );
 }

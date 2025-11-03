@@ -19,12 +19,12 @@ function LoginPage(props) {
 
   return (
     <>
-      <h3>login</h3>
       <form
         action=""
         onSubmit={checkLoginInfo}
         style={{ display: "flex", flexDirection: "column" }}
       >
+        <h3>login</h3>
         <label htmlFor="username">username:</label>
         <input
           type="text"
@@ -46,8 +46,8 @@ function LoginPage(props) {
           }}
         />
         <input type="submit" />
+        <button onClick={() => props.setIsSigningUp(true)}>sign up</button>
       </form>
-      <button onClick={() => props.setIsSigningUp(true)}>sign up</button>
     </>
   );
 }
